@@ -28,10 +28,13 @@ public final class TextConverter {
         private String date;
 
         @SuppressWarnings("unused")
-        private String crime;
+        private LinkedList<String> crimes;
 
         @SuppressWarnings("unused")
         private String location;
+
+        @SuppressWarnings("unused")
+        private String disposition;
 
     }
 
@@ -98,12 +101,17 @@ public final class TextConverter {
      * Gets and returns the location of the crime log.
      */
     private static String getLocation(String crimeLog) {
-        String location = "unknown";
+        String location = "";
 
         for (String currentLocation : LOCATIONS) {
-            if (crimeLog.contains(currentLocation)) {
+            if (crimeLog.contains(currentLocation)
+                    && currentLocation.length() > location.length()) {
                 location = currentLocation;
             }
+        }
+
+        if (location.equals("")) {
+            location = "unknown";
         }
 
         return location;
@@ -112,16 +120,34 @@ public final class TextConverter {
     /**
      * Gets and returns the crime of the crime log.
      */
-    private static String getCrime(String crimeLog) {
-        String crime = "unknown";
+    private static LinkedList<String> getCrimes(String crimeLog) {
+        LinkedList<String> crimes = new LinkedList<>();
 
         for (String currentCrime : CRIMES) {
             if (crimeLog.contains(currentCrime)) {
-                crime = currentCrime;
+                crimes.addLast(currentCrime);
             }
         }
 
-        return crime;
+        if (crimes.size() == 0) {
+            crimes.addLast("unknown");
+        }
+
+        return crimes;
+    }
+
+    /**
+     * Gets and returns the disposition of the crime log.
+     */
+    private static String getDisposition(String crimeLog) {
+        // Assume open, change to closed if needed
+        String disposition = "open";
+
+        if (crimeLog.contains("closed")) {
+            disposition = "closed";
+        }
+
+        return disposition;
     }
 
     /**
@@ -141,9 +167,11 @@ public final class TextConverter {
             String crimeLog = getCrimeLog(sc.nextLine());
             if (!crimeLog.equals("")) {
                 Log currentLog = new Log();
-                currentLog.crime = getCrime(crimeLog.toLowerCase());
+                currentLog.crimes = getCrimes(crimeLog.toLowerCase());
                 currentLog.date = getDate(crimeLog);
                 currentLog.location = getLocation(crimeLog.toLowerCase());
+                currentLog.disposition = getDisposition(crimeLog.toLowerCase());
+
                 fullCrimeLog.addLast(currentLog);
             }
         }
