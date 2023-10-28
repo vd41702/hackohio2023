@@ -26,7 +26,6 @@ public final class TextConverter {
      */
     private static class Log {
 
-        @SuppressWarnings("unused")
         private String date;
 
         @SuppressWarnings("unused")
@@ -66,17 +65,17 @@ public final class TextConverter {
             "safe auto", "ramseyer", "lane ave and carmack", "mcdonald",
             "227 e 15th", "south oval", "11th ave garage", "stores",
             "delta tau", "bradley", "mendenhall", "animal science", "goco",
-            "highland st. & w. 11th", "smith lab", "applewood",
-            "osu medical center", "west parking", "postle", "scarlet",
-            "fawcett", "blackwell", "townshend", "wilce", "indianola",
-            "12th and indianola", "150 w lane", "1928 n", "pearl st and 13th",
-            "raney", "nosker", "w 12th ave & college", "fontana", "meiling",
-            "osu obstetrics", "research admin", "united dairy", "ives drive",
-            "west woodruff", "mack", "buckeye village", "metro high",
-            "indianola middle", "paterson", "baker systems and dreese",
-            "hopkins", "pearl st", "w 11th ave & neil", "marketplace", "cvs",
-            "traditions at scott", "osu human", "scott lab", "osu main ed",
-            "bistro", "medcical center", "mirror lake", "vet med", "walgreens",
+            "highland st. & w. 11th", "smith lab", "osu medical center",
+            "west parking", "postle", "scarlet", "fawcett", "blackwell",
+            "townshend", "wilce", "indianola", "12th and indianola",
+            "150 w lane", "1928 n", "pearl st and 13th", "raney", "nosker",
+            "w 12th ave & college", "fontana", "meiling", "osu obstetrics",
+            "research admin", "united dairy", "ives drive", "west woodruff",
+            "mack", "buckeye village", "metro high", "indianola middle",
+            "paterson", "baker systems and dreese", "hopkins", "pearl st",
+            "w 11th ave & neil", "marketplace", "cvs", "traditions at scott",
+            "osu human", "scott lab", "osu main ed", "bistro",
+            "medcical center", "mirror lake", "vet med", "walgreens",
             "w 5th @ olentangy", "bricker", "gromwell", "kennedy",
             "w llth ave @ neil", "houck house", "university square",
             "gateway B", "fisher commons", "osu hospital", "union market",
