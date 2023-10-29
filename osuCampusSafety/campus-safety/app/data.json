@@ -1,0 +1,76 @@
+{
+    "crimes": [
+        {
+        "Case Number": "P2023-03286",
+        "Date/Time Reported": "10/26/23 15:17",
+        "Date/Time Occurred Start": "10/26/23 07:30",
+        "Date/Time Occurred End": "10/26/23 15:15",
+        "Offenses": "Theft - without consent",
+        "General Location": "Carmack Lot 5",
+        "Disposition": "Closed"
+        },
+        {
+        "Case Number": "P2023-03280",
+        "Date/Time Reported": "10/26/23 13:38",
+        "Date/Time Occurred Start": "10/26/23 13:38",
+        "Date/Time Occurred End": null,
+        "Offenses": "Theft - without consent; Assault - knowingly harm victim",
+        "General Location": "The Union",
+        "Disposition": "Open - Arrest"
+        },
+        {
+        "Case Number": "CSA2023-03285",
+        "Date/Time Reported": "10/26/23 10:13",
+        "Date/Time Occurred Start": "10/10/23 09:30",
+        "Date/Time Occurred End": null,
+        "Offenses": "CSA Report: Stalking",
+        "General Location": "Baker Hall - West",
+        "Disposition": "Closed"
+        },
+        {
+        "Case Number": "P2023-03276",
+        "Date/Time Reported": "10/26/23 08:37",
+        "Date/Time Occurred Start": "08/01/23 00:01",
+        "Date/Time Occurred End": "10/25/23 15:00",
+        "Offenses": "Theft - without consent",
+        "General Location": "Hitchcock Hall",
+        "Disposition": "Closed"
+        },
+        {
+        "Case Number": "P2023-03274",
+        "Date/Time Reported": "10/26/23 05:44",
+        "Date/Time Occurred Start": "10/25/23 16:30",
+        "Date/Time Occurred End": "10/26/23 06:00",
+        "Offenses": "Criminal Damaging/Endangering - knowingly any means",
+        "General Location": "Maintenance Building",
+        "Disposition": "Open - Pending Investigation"
+        },
+        {
+        "Case Number": "EXT2023-03284",
+        "Date/Time Reported": "10/26/23 02:44",
+        "Date/Time Occurred Start": "10/24/23 21:48",
+        "Date/Time Occurred End": null,
+        "Offenses": "Public Indecency - exposure",
+        "General Location": "E 11TH AVENUE",
+        "Disposition": "Closed"
+        },
+        {
+        "Case Number": "P2023-03273",
+        "Date/Time Reported": "10/26/23 01:28",
+        "Date/Time Occurred Start": "10/26/23 01:28",
+        "Date/Time Occurred End": null,
+        "Offenses": "Offenses Involving Underage Persons - underage consume beer intoxicating liquor; Disorderly Conduct - intoxicated create risk of harm",
+        "General Location": "Morrill Tower",
+        "Disposition": "Closed"
+        },
+        {
+        "Case Number": "P2023-03272",
+        "Date/Time Reported": "10/25/23 23:39",
+        "Date/Time Occurred Start": "10/25/23 23:39",
+        "Date/Time Occurred End": "10/26/23 23:56",
+        "Offenses": "Domestic Violence (CCC) Knowingly Intimate Partner",
+        "General Location": "Schottenstein Center",
+        "Disposition": "Open - Pending Investigation"
+        }
+    ]
+}

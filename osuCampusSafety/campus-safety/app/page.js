@@ -1,113 +1,180 @@
-import Image from 'next/image'
+"use client"
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+import MapDisplay from "./components/MapDisplay"
+import Header from "./components/Header"
+import Graphs from "./components/Graphs";
+import { useState } from "react";
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+// const crimeData = [
+//   {
+//   "Case Number": "P2023-03286",
+//   "Date/Time Reported": "10/26/23 15:17",
+//   "Date/Time Occurred Start": "10/26/23 07:30",
+//   "Date/Time Occurred End": "10/26/23 15:15",
+//   "Offenses": "Theft - without consent",
+//   "General Location": "Carmack Lot 5",
+//   "Disposition": "Closed"
+//   },
+//   {
+//   "Case Number": "P2023-03280",
+//   "Date/Time Reported": "10/26/23 13:38",
+//   "Date/Time Occurred Start": "10/26/23 13:38",
+//   "Date/Time Occurred End": null,
+//   "Offenses": "Theft - without consent; Assault - knowingly harm victim",
+//   "General Location": "The Union",
+//   "Disposition": "Open - Arrest"
+//   },
+//   {
+//   "Case Number": "CSA2023-03285",
+//   "Date/Time Reported": "10/26/23 10:13",
+//   "Date/Time Occurred Start": "10/10/23 09:30",
+//   "Date/Time Occurred End": null,
+//   "Offenses": "CSA Report: Stalking",
+//   "General Location": "Baker Hall - West",
+//   "Disposition": "Closed"
+//   },
+//   {
+//   "Case Number": "P2023-03276",
+//   "Date/Time Reported": "10/26/23 08:37",
+//   "Date/Time Occurred Start": "08/01/23 00:01",
+//   "Date/Time Occurred End": "10/25/23 15:00",
+//   "Offenses": "Theft - without consent",
+//   "General Location": "Hitchcock Hall",
+//   "Disposition": "Closed"
+//   },
+//   {
+//   "Case Number": "P2023-03274",
+//   "Date/Time Reported": "10/26/23 05:44",
+//   "Date/Time Occurred Start": "10/25/23 16:30",
+//   "Date/Time Occurred End": "10/26/23 06:00",
+//   "Offenses": "Criminal Damaging/Endangering - knowingly any means",
+//   "General Location": "Maintenance Building",
+//   "Disposition": "Open - Pending Investigation"
+//   },
+//   {
+//   "Case Number": "EXT2023-03284",
+//   "Date/Time Reported": "10/26/23 02:44",
+//   "Date/Time Occurred Start": "10/24/23 21:48",
+//   "Date/Time Occurred End": null,
+//   "Offenses": "Public Indecency - exposure",
+//   "General Location": "E 11TH AVENUE",
+//   "Disposition": "Closed"
+//   },
+//   {
+//   "Case Number": "P2023-03273",
+//   "Date/Time Reported": "10/26/23 01:28",
+//   "Date/Time Occurred Start": "10/26/23 01:28",
+//   "Date/Time Occurred End": null,
+//   "Offenses": "Offenses Involving Underage Persons - underage consume beer intoxicating liquor; Disorderly Conduct - intoxicated create risk of harm",
+//   "General Location": "Morrill Tower",
+//   "Disposition": "Closed"
+//   },
+//   {
+//   "Case Number": "P2023-03272",
+//   "Date/Time Reported": "10/25/23 23:39",
+//   "Date/Time Occurred Start": "10/25/23 23:39",
+//   "Date/Time Occurred End": "10/26/23 23:56",
+//   "Offenses": "Domestic Violence (CCC) Knowingly Intimate Partner",
+//   "General Location": "Schottenstein Center",
+//   "Disposition": "Open - Pending Investigation"
+//   }
+// ]
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+
+export default function Page() {
+  const [isOpenChecked, setIsOpenChecked] = useState(true);
+  const [isClosedChecked, setIsClosedChecked] = useState(true);
+  const [isCrimeTypeChecked, setCrimeTypeChecked] = useState([false, false, false, false, false]);
+
+
+  let crimeData = require('./_data/crimeData.json')
+
+  crimeData = filterByDisposition(isOpenChecked, isClosedChecked, crimeData)
+  let commonCrimeFilter = getMostCommonCrimes(isCrimeTypeChecked)
+  crimeData = filterByCrime(commonCrimeFilter, crimeData)
+
+  let crimeLatLongs = getCrimeLocationCounts(crimeData)
+  
+  
+  return <>
+    <Header></Header>
+    <MapDisplay 
+    crimeData={crimeData} 
+    crimeLatLongs={crimeLatLongs}
+    isOpenChecked={isOpenChecked} 
+    setIsOpenChecked={setIsOpenChecked}
+    isClosedChecked={isClosedChecked}
+    setIsClosedChecked={setIsClosedChecked}
+    isCrimeTypeChecked={isCrimeTypeChecked}
+    setCrimeTypeChecked={setCrimeTypeChecked}/>
+    <Graphs/>
+  </>
 }
+
+
+const getCrimeLocationCounts = (crimeData) => {
+  let crimeLocationCounts = {}
+  
+  crimeData.forEach(crime => {
+    let s = crime["location"]
+    if(s in crimeLocationCounts) {
+      crimeLocationCounts[s]++
+    } else {
+      crimeLocationCounts[s] = 1
+    }
+  });
+
+  
+
+  return Object.entries(crimeLocationCounts).map(([location, count]) => {
+    return {latLong: getCrimeLatLong(location), count}
+  }).filter(a => a.latLong != undefined)
+}
+
+
+const getCrimeLatLong = (crime) => {
+  const locationDict = require('./_data/latlong.json')
+  
+  return locationDict[crime]
+}
+
+const filterByDisposition = (open = true, closed = true, crimeData) => {
+  return crimeData.filter(crime => {
+    if(open && crime["disposition"] == "open") {
+      return true
+    }
+    if(closed && crime["disposition"] == "closed") {
+      return true
+    }
+
+    return false
+  })
+}
+
+const filterByCrime = (typeFilters, crimeData) => {
+  let typeFiltersSet = new Set(typeFilters)
+  if(typeFilters.length == 0) {
+    return crimeData
+  }
+  return crimeData.filter(crime => {
+    const crimeList = crime["crimes"]
+    for(const c of crimeList) {
+      if(typeFiltersSet.has(c)) {
+        return true
+      }
+    }
+    return false
+  })
+}
+
+
+const getMostCommonCrimes = (crimeTypeChecked) => {
+  let commonCrimes = ["theft", "drugs", "disorderly conduct", "criminal trespass", "illegal use or possession"]
+  let filtered = commonCrimes.filter((_, i) => crimeTypeChecked[i])
+  console.log("filteredASHDAKJNSDAJDNKA", filtered, crimeTypeChecked)
+  return filtered
+}
+
